@@ -1,0 +1,29 @@
+-- Virgaroxx Script Entrenched
+-- Delta Script untuk Entrenched Roblox
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Camera = game.Workspace.CurrentCamera
+local UserInputService = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Toggle script
+local enabled = false
+local aimEnabled = false
+local headshotEnabled = false
+
+-- Fungsi ESP kecil
+local function ESP(target)
+    local billboard = Instance.new("BillboardGui", target.Character.Head)
+    billboard.Size = UDim2.new(0, 50, 0, 10) -- UI kecil
+    billboard.StudsOffset = Vector3.new(0, 2, 0)
+    local text = Instance.new("TextLabel", billboard)
+    text.Text = "Musuh"
+    text.Size = UDim2.new(1, 0, 1, 0)
+    text.BackgroundTransparency = 1
+    text.TextColor3 = Color3.fromRGB(255, 0, 0)
+    text.FontSize = Enum.FontSize.Size8 -- Font kecil
+end
+
+-- Auto Aim
+local function getNearestEnemy()
+    local nearest, distance = nil, math.h
